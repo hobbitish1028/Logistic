@@ -1,14 +1,3 @@
-## usethis namespace: start
-#' @useDynLib Logistic, .registration = TRUE
-## usethis namespace: end
-NULL
-
-## usethis namespace: start
-#' @importFrom Rcpp sourceCpp
-## usethis namespace: end
-NULL
-
-
 #'Binomial Logistic regression
 #'
 #'Fit a generalized linear model via penalized maximum likelihood.
