@@ -3,7 +3,7 @@
 using namespace Rcpp;
 
 
-Rcpp:: NumericVector multi(Rcpp:: NumericMatrix X, Rcpp:: NumericVector beta, int nsites, int p){
+NumericVector multi(Rcpp:: NumericMatrix X, Rcpp:: NumericVector beta, int nsites, int p){
   
   Rcpp:: NumericVector result(nsites);
   for(int j = 0; j < nsites; j++)
