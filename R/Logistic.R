@@ -24,7 +24,7 @@ NULL
 #' Since we aim at binomial distribution, it should be either a factor with two levels,
 #'  or a two-column matrix (every row is the probability of two class.)
 #'@param maxit the Maximum number of iterations when we use optimization to estimate the parameeter;
-#'  default is 10^5.
+#'  default is 5000.
 #'
 #'@export
 #'   
