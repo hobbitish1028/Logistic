@@ -6,6 +6,8 @@
 #' Since we aim at binomial distribution, it should be either a factor with two levels,
 #'  or a two-column matrix (every row is the probability of two class.)
 #'  @return the prediction for every row of test data newx. And the label will be the same as that of training data.
+#'   @export
+#'   
 
 My_predict<-function(fit,newx){
   n<-dim(newx)[1]

@@ -16,7 +16,7 @@ Can be in sparse matrix format
 Since we aim at binomial distribution, it should be either a factor with two levels,
  or a two-column matrix (every row is the probability of two class.)}
 
-\item{max_ite}{the Maximum number of iterations when we use optimization to estimate the parameeter;
+\item{maxit}{the Maximum number of iterations when we use optimization to estimate the parameeter;
  default is 10^5.
 
  @return a data frame which contains the result of this logistic regression.
@@ -26,6 +26,7 @@ Since we aim at binomial distribution, it should be either a factor with two lev
  @param loss the record of loss in iterations, which can help users to check the convergence
 
  @param Train_Acc the accuracy of the train set, defined as (number of right prediction divided by sample size)
+ 
  @export}
 }
 \description{
