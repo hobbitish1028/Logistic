@@ -13,7 +13,7 @@ test_that("multiplication works", {
   y<-rep(c(1,0),each=n)
   
   ##Accuracy of the training data and testing data
-  fit<-Logreg(X,y,maxit = 200)
+  fit<-Logreg(X,y,maxit = 300)
   acc_mine<-fit$accuracy
   
   library(glm2)
@@ -22,5 +22,5 @@ test_that("multiplication works", {
   dat<-as.data.frame(cbind(y,X))
   fit0<-glm(y~.,data=dat,family=binomial(link=logit))
   acc_glm<-(mean((fit0$fitted.values[1:n]>0.5) ) + mean((fit0$fitted.values[n+(1:n)]<0.5) ) )/2
-  expect_equal( acc_mine,acc_glm )
+  expect_equal( round(acc_mine*1e3),round(acc_glm*1e3) )
 })

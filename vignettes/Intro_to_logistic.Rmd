@@ -10,7 +10,6 @@ vignette: >
 ```{r,echo = FALSE,include=FALSE}
 library(Logistic)
 library("Rcpp")
-library(glmnet)
 library(glm2)
 library(dplyr)
 library(ggplot2)
@@ -101,22 +100,6 @@ train_acc_mine<-fit$accuracy
 test_acc_mine<-mean(my_prediction == test_y)
 ```
 
-
-## CV.glmnet
-
-Cv.glmnet is a very strong function with great maturity. It uses lasso & ridge penalty to improve the result and avoid overfitting, and cross validation is introduced to avoid the trouble of tuning. However, it may thus cost much more time as tradeoff.
-
-```{r}
-t0<-proc.time()
-fit0<-cv.glmnet(X,y,family = "binomial")
-t3<-proc.time()-t0
-result1<- predict(fit0, newx = X,  type = "class")
-result2<- predict(fit0, newx = test_x,  type = "class")
-train_acc_cv<-mean(result1==y)
-test_acc_cv<-mean(result2==test_y)
-
-```
-
 ## glm
 ```{r}
 t0<-proc.time()
@@ -134,15 +117,15 @@ test_acc_glm<- mean( pred_glm*rep(c(1,-1),each=n)>0  )
 ## Comparison between three method
 ```{r,echo=FALSE}
 
-class <- rep(c("train","test"),3)
-accuracy<-c(train_acc_mine,test_acc_mine,train_acc_cv,test_acc_cv,train_acc_glm,test_acc_glm)
-method<- rep(c("Mine","cv.glmnet","glm"),each=2)
+class <- rep(c("train","test"),2)
+accuracy<-c(train_acc_mine,test_acc_mine,train_acc_glm,test_acc_glm)
+method<- rep(c("Mine","glm"),each=2)
 dat<-data.frame(class,accuracy,method)
 
 ggplot(
   dat %>%
     filter(
-      method %in% c("Mine","cv.glmnet","glm")
+      method %in% c("Mine","glm")
     ) %>% group_by(class,method) %>% summarize(
       acc = accuracy
     )
@@ -158,8 +141,8 @@ ggplot(
   )+coord_cartesian( ylim = c(0.90, 0.97))+ggtitle("Comparison (three models)") +
   theme(plot.title = element_text(hjust = 0.5))
 
-A<-matrix(c(t1[3],t3[3],t4[3]),1,3)
-colnames(A)<-c("My LogReg","cv.glmnet","glm")
+A<-matrix(c(t1[3],t4[3]),1,2)
+colnames(A)<-c("My LogReg","glm")
 rownames(A)<-"time (s)"
 A
 ```
