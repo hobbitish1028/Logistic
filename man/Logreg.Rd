@@ -25,7 +25,8 @@ Since we aim at binomial distribution, it should be either a factor with two lev
 
  @param loss the record of loss in iterations, which can help users to check the convergence
 
- @param Train_Acc the accuracy of the train set, defined as (number of right prediction divided by sample size)}
+ @param Train_Acc the accuracy of the train set, defined as (number of right prediction divided by sample size)
+ @export}
 }
 \description{
 Fit a generalized linear model via penalized maximum likelihood.
