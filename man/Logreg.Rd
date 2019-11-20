@@ -17,17 +17,7 @@ Since we aim at binomial distribution, it should be either a factor with two lev
  or a two-column matrix (every row is the probability of two class.)}
 
 \item{maxit}{the Maximum number of iterations when we use optimization to estimate the parameeter;
- default is 10^5.
-
- @return a data frame which contains the result of this logistic regression.
-
- @param x the regression result, a length p+1 vector (include the intercept)
-
- @param loss the record of loss in iterations, which can help users to check the convergence
-
- @param Train_Acc the accuracy of the train set, defined as (number of right prediction divided by sample size)
- 
- @export}
+default is 10^5.}
 }
 \description{
 Fit a generalized linear model via penalized maximum likelihood.

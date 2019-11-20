@@ -16,25 +16,17 @@ NULL
 #'at a grid of values for the regularization parameter lambda.
 #'Can deal with all shapes of data,including very large sparse data matrices.
 #'
-#' @param X input matrix, of dimension n (sample number) by p (variable number);
+#'@param X input matrix, of dimension n (sample number) by p (variable number);
 #' each row is an observation vector.
 #' Can be in sparse matrix format
 #' (inherit from class "sparseMatrix" as in package Matrix;
-#' @param y response variable.
+#'@param y response variable.
 #' Since we aim at binomial distribution, it should be either a factor with two levels,
 #'  or a two-column matrix (every row is the probability of two class.)
-#' @param maxit the Maximum number of iterations when we use optimization to estimate the parameeter;
+#'@param maxit the Maximum number of iterations when we use optimization to estimate the parameeter;
 #'  default is 10^5.
 #'
-#'  @return a data frame which contains the result of this logistic regression.
-#'
-#'  @param x the regression result, a length p+1 vector (include the intercept)
-#'
-#'  @param loss the record of loss in iterations, which can help users to check the convergence
-#'
-#'  @param Train_Acc the accuracy of the train set, defined as (number of right prediction divided by sample size)
-#'  
-#'  @export
+#'@export
 #'   
 
 # devtools::install_github("hobbitish1028/Logistic")
