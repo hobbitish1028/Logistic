@@ -1,3 +1,14 @@
+## usethis namespace: start
+#' @useDynLib Logistic, .registration = TRUE
+## usethis namespace: end
+NULL
+
+## usethis namespace: start
+#' @importFrom Rcpp sourceCpp
+## usethis namespace: end
+NULL
+
+
 #'Binomial Logistic regression
 #'
 #'Fit a generalized linear model via penalized maximum likelihood.
@@ -26,7 +37,7 @@
 
 # devtools::install_github("hobbitish1028/Logistic_Reg")
 
-# Rcpp::sourceCpp('src/LogRegCpp.cpp')
+Rcpp::sourceCpp('src/LogRegCpp.cpp')
 
 Logreg<-function(X,y,maxit = 5000){
   #library(Rcpp)
