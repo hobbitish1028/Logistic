@@ -37,11 +37,11 @@ NULL
 
 # devtools::install_github("hobbitish1028/Logistic_Reg")
 
-Rcpp::sourceCpp('src/LogRegCpp.cpp')
-
 Logreg<-function(X,y,maxit = 5000){
   #library(Rcpp)
   #Rcpp::sourceCpp('LogRegCpp.cpp')
+  Rcpp::sourceCpp('src/LogRegCpp.cpp')
+  
   n<-dim(X)[1]
   X<-cbind(rep(1,n),X)
   p<-dim(X)[2]
