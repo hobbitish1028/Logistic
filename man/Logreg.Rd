@@ -17,7 +17,7 @@ Since we aim at binomial distribution, it should be either a factor with two lev
  or a two-column matrix (every row is the probability of two class.)}
 
 \item{maxit}{the Maximum number of iterations when we use optimization to estimate the parameeter;
-default is 10^5.}
+default is 5000.}
 }
 \description{
 Fit a generalized linear model via penalized maximum likelihood.
