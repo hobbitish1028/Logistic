@@ -13,8 +13,8 @@ library("Rcpp")
 library(glm2)
 library(dplyr)
 library(ggplot2)
-source('R/Logistic.R')
-source('R/My_predict.R')
+# source('R/Logistic.R')
+# source('R/My_predict.R')
 ```
 
 
@@ -54,7 +54,7 @@ Under most of the condition, we only need to input the n by p data matrix $X_{n,
 
 ```{r}
 t0<-proc.time()
-fit<-Logreg(X,y)
+fit<-Logreg(X,y,maxit = 100)
 t1<-proc.time()-t0
 
 ```

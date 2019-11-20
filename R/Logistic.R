@@ -33,9 +33,10 @@ NULL
 #'  @param loss the record of loss in iterations, which can help users to check the convergence
 #'
 #'  @param Train_Acc the accuracy of the train set, defined as (number of right prediction divided by sample size)
+#'  @export
+#'   
 
-
-# devtools::install_github("hobbitish1028/Logistic_Reg")
+# devtools::install_github("hobbitish1028/Logistic")
 
 Logreg<-function(X,y,maxit = 5000){
   #library(Rcpp)

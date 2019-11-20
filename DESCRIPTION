@@ -16,3 +16,4 @@ Suggests:
     rmarkdown,
     covr
 VignetteBuilder: knitr
+Encoding: UTF-8
