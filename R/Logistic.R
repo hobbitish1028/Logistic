@@ -61,14 +61,4 @@ Logreg<-function(X,y,maxit = 5000){
   return(result)
 }
 
-My_predict<-function(fit,newx){
-  n<-dim(newx)[1]
-  X<-cbind(rep(1,n),newx)
-  p<-dim(X)[2]
-  result <- X%*%fit$x
-  tmp <-rep(fit$label[2],n)
-  tmp[which(result>0)]<-fit$label[1]
-  return( tmp)
-}
-
 
