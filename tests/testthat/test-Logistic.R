@@ -13,7 +13,7 @@ test_that("multiplication works", {
   y<-rep(c(1,0),each=n)
   
   ##Accuracy of the training data and testing data
-  fit<-Logreg(X,y,maxit = 300)
+  fit<-Logreg(X,y)
   acc_mine<-fit$accuracy
   
   library(glm2)

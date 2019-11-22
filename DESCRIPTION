@@ -1,11 +1,11 @@
 Package: Logistic
 Type: Package
-Title: What the Package Does in One 'Title Case' Line
+Title: Binomial logistic regression
 Version: 1.0
 Date: 2019-11-19
-Author: Your Name
-Maintainer: Your Name <your@email.com>
-Description: One paragraph description of what the package does as one or more full sentences.
+Author: Chang Wang
+Maintainer: Chang Wang <wangchan@umich.edu>
+Description: Perform binomial logistic regression and predict with trained model
 License: GPL (>= 2)
 Imports: Rcpp (>= 1.0.3)
 LinkingTo: Rcpp

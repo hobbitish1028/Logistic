@@ -23,22 +23,21 @@ Logreg<-function(X,y,maxit = 10000){
   n<-dim(X)[1]
   X<-cbind(rep(1,n),X)
   p<-dim(X)[2]
-  output<-unique(y)
  
   set.seed(1)
   tmp<-sample(1:n,n)
   X<-X[tmp,]
   y<-y[tmp]
   yy<- as.numeric(y==output[1])
-  
+  output<-unique(yy)
   ### Use rcpp
   result <- LogRegcpp(X,rep(0,p),yy,maxit = maxit)
   result$loss <- result$loss[result$loss !=0 ]
-  result$prediction <- result$P > 0.5
+
   pred<-rep(output[2],n)
-  pred[which(result$P > 0.5)]<- output[1]
+  pred[which(X%*%result$x > 0.5)]<- output[1]
   result$prediction <- pred
-  result$accuracy <- mean(result$prediction == y)
+  result$accuracy <-   mean(result$prediction == yy)
   result$label <-output
   return(result)
 }
