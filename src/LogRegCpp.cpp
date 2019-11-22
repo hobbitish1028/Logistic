@@ -104,12 +104,12 @@ List LogRegcpp(NumericMatrix X, NumericVector x, NumericVector y ,int maxit){
     
     if( i>3000 ){
       double mu = 0; 
-      for(int j = i-10; j < i; j++){
+      for(int j = i/20 -10; j < i/20 ; j++){
         mu += loss[j]; 
       }
       mu = mu /10;
       double s = 0;
-      for(int j = i-10; j < i; j++){
+      for(int j = i/20 -10; j < i/20; j++){
         s += pow(loss[i] - mu, 2.0);
       }  
       s = s/10;
