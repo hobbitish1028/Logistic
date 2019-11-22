@@ -23,8 +23,12 @@ Logreg<-function(X,y,maxit = 5000){
   n<-dim(X)[1]
   X<-cbind(rep(1,n),X)
   p<-dim(X)[2]
-  
   output<-unique(y)
+ 
+  set.seed(1)
+  tmp<-sample(1:n,n)
+  X<-X[tmp,]
+  y<-y[tmp]
   yy<- as.numeric(y==output[1])
   
   ### Use rcpp
