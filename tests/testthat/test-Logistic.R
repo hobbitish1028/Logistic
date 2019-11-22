@@ -1,5 +1,7 @@
+
 test_that("multiplication works", {
   library(Logistic)
+  library(glm2)
   sigma<-4
   set.seed(123)
   n<-1e4
@@ -16,7 +18,7 @@ test_that("multiplication works", {
   fit<-Logreg(X,y)
   acc_mine<-fit$accuracy
   
-  library(glm2)
+
   ### result of glm
   ### train accuracy
   dat<-as.data.frame(cbind(y,X))

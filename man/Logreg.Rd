@@ -4,7 +4,7 @@
 \alias{Logreg}
 \title{Binomial Logistic regression}
 \usage{
-Logreg(X, y, maxit = 5000)
+Logreg(X, y, maxit = 10000)
 }
 \arguments{
 \item{X}{input matrix, of dimension n (sample number) by p (variable number);
