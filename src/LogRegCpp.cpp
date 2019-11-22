@@ -59,14 +59,6 @@ List LogRegcpp(NumericMatrix X, NumericVector x, NumericVector y ,int maxit){
     
     NumericVector P0 =  multi(XX ,x,500,p);
     
-    for(int i=0;i< 500;i++){
-      if(P0[i] < -20){
-        P0[i] = -20;
-      }
-      if(P0[i] > 20){
-        P0[i] = 20;
-      }
-    }
     P0 = exp(-P0);
     P = 1.0/ (1.0 + P0);
     
