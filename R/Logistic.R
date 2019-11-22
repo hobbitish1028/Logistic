@@ -18,7 +18,7 @@
 #'@export
 #'   
 
-Logreg<-function(X,y,maxit = 5000){
+Logreg<-function(X,y,maxit = 10000){
   
   n<-dim(X)[1]
   X<-cbind(rep(1,n),X)
