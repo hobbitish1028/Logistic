@@ -50,7 +50,7 @@ List LogRegcpp(NumericMatrix X, NumericVector x, NumericVector y ,int maxit){
   NumericVector P0(500);
   NumericVector P(500);
   NumericVector gradient(p);
-  
+  double loss0 = 0;
   for(int i=1; i < times ; i++){
     beta_2 = B[i+50] / B[i+51];
     
@@ -82,7 +82,7 @@ List LogRegcpp(NumericMatrix X, NumericVector x, NumericVector y ,int maxit){
     
     NumericVector P1 = log(P);
     NumericVector P2 = log(1-P);
-    double loss0 = 0;
+   
     for( int j =0;j< 500;j++){
       if(y[j]==0){
         loss0  -= P2[j];
@@ -90,7 +90,10 @@ List LogRegcpp(NumericMatrix X, NumericVector x, NumericVector y ,int maxit){
         loss0  -= P1[j];
       }
     }
-    loss[i] = loss0;  // Loss function is the log likelihood
+    if( i %10 ==0){
+      loss[i] = loss0;  // Loss function is the log likelihood
+      loss0 = 0;
+    }
     
     if( i>3000 ){
       double mu = 0; 
