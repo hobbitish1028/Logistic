@@ -91,8 +91,8 @@ List LogRegcpp(NumericMatrix X, NumericVector x, NumericVector y ,int maxit){
         loss0  -= P1[j];
       }
     }
-    if( i %10 ==0){
-      loss[i/10] = loss0;  // Loss function is the log likelihood
+    if( i %20 ==0){
+      loss[i/20] = loss0;  // Loss function is the log likelihood
       loss0 = 0;
     }
     

@@ -9,6 +9,7 @@ vignette: >
 
 
 ```{r,echo = FALSE,include=FALSE}
+#devtools::install_github("hobbitish1028/Logistic")
 library(Logistic)
 library("Rcpp")
 library(glm2)
