@@ -7,7 +7,10 @@ Author: Chang Wang
 Maintainer: Chang Wang <wangchan@umich.edu>
 Description: Perform binomial logistic regression and predict with trained model
 License: GPL (>= 2)
-Imports: Rcpp (>= 1.0.3),glm2
+Imports: Rcpp (>= 1.0.3),
+          glm2,
+          dplyr,
+          ggplot2
 LinkingTo: Rcpp
 RoxygenNote: 7.0.0
 Suggests: 
