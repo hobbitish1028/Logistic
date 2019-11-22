@@ -92,7 +92,7 @@ List LogRegcpp(NumericMatrix X, NumericVector x, NumericVector y ,int maxit){
     }
     loss[i] = loss0;  // Loss function is the log likelihood
     
-    if( i>500 ){
+    if( i>3000 ){
       double mu = 0; 
       for(int j = i-10; j < i; j++){
         mu += loss[j]; 
