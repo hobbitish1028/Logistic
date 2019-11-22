@@ -110,7 +110,7 @@ List LogRegcpp(NumericMatrix X, NumericVector x, NumericVector y ,int maxit){
       mu = mu /10;
       double s = 0;
       for(int j = i/20 -10; j < i/20; j++){
-        s += pow(loss[i] - mu, 2.0);
+        s += pow(loss[j] - mu, 2.0);
       }  
       s = s/10;
       // if the loss converge, the break

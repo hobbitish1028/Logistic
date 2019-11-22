@@ -31,8 +31,8 @@ The following is an toy example with 20000 samples and 100 features (we use it a
 
 sigma<-4
 set.seed(123)
-n<-1e4
-p<-1e2
+n<-1e3
+p<-1e1
 mu1<-rnorm(p)
 mu2<-rnorm(p)
 X1<-matrix(mu1+rnorm(n*p,0,sigma),n,p,byrow = TRUE)
