@@ -9,7 +9,45 @@ vignette: >
 
 
 ```{r,echo = FALSE,include=FALSE}
-library(Logistic)
+#library(Logistic)
+
+Logreg<-function(X,y,maxit = 5000){
+  
+  n<-dim(X)[1]
+  X<-cbind(rep(1,n),X)
+  p<-dim(X)[2]
+  output<-unique(y)
+ 
+  
+  tmp<-sample(1:n,n)
+  X<-X[tmp,]
+  y<-y[tmp]
+  yy<- as.numeric(y==output[1])
+  
+  ### Use rcpp
+  result <- LogRegcpp(X,rep(0,p),yy,maxit = maxit)
+  result$loss <- result$loss[result$loss !=0 ]
+  result$prediction <- result$P > 0.5
+  pred<-rep(output[2],n)
+  pred[which(result$P > 0.5)]<- output[1]
+  result$prediction <- pred
+  result$accuracy <- mean(result$prediction == y)
+  result$label <-output
+  return(result)
+}
+
+
+
+My_predict<-function(fit,newx){
+  n<-dim(newx)[1]
+  X<-cbind(rep(1,n),newx)
+  p<-dim(X)[2]
+  result <- X%*%fit$x
+  tmp <-rep(fit$label[2],n)
+  tmp[which(result>0)]<-fit$label[1]
+  return( tmp)
+}
+
 library("Rcpp")
 library(glm2)
 library(dplyr)
@@ -74,8 +112,8 @@ plot(fit$P[c(1:100,1e4+(1:100))],main="Probability (Prediction)",xlab = "sample 
 We need to get the trained model(`fit`) first by using the above LogReg function. Then we just need two inputs (fit and the test matrix) to make a new prediction. The training accuracy is saved in `fit$accuracy` and the training result (the estimate of parameter) is saved in `fit$x`.
 
 ```{r}
-my_prediction<-My_predict(fit,newx = test_x)
-train_acc_mine<-fit$accuracy
+my_prediction<-My_predict(fit,newx = X)
+train_acc_mine<-mean(my_prediction == y)
 test_acc_mine<-mean(my_prediction == test_y)
 ```
 
