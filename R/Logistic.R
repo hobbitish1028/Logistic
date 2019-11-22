@@ -24,6 +24,7 @@ Logreg<-function(X,y,maxit = 10000){
   X<-cbind(rep(1,n),X)
   p<-dim(X)[2]
  
+  #We will use stochastic method to optimize, thus we randomly arrange them here
   set.seed(1)
   tmp<-sample(1:n,n)
   X<-X[tmp,]
