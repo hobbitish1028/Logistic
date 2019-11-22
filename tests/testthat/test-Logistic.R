@@ -1,7 +1,7 @@
 test_that("multiplication works", {
-  
+  library(Logistic)
   sigma<-4
-  set.seed(1)
+  set.seed(123)
   n<-1e4
   p<-1e2
   mu1<-rnorm(p)
@@ -22,5 +22,5 @@ test_that("multiplication works", {
   dat<-as.data.frame(cbind(y,X))
   fit0<-glm(y~.,data=dat,family=binomial(link=logit))
   acc_glm<-(mean((fit0$fitted.values[1:n]>0.5) ) + mean((fit0$fitted.values[n+(1:n)]<0.5) ) )/2
-  expect_equal( round(acc_mine*1e3),round(acc_glm*1e3) )
+  expect_equal( ceiling(acc_mine*1e3),ceiling(acc_glm*1e3) )
 })

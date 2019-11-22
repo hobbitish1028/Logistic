@@ -36,9 +36,9 @@ Logreg<-function(X,y,maxit = 10000){
   result$loss <- result$loss[result$loss !=0 ]
 
   pred<-rep(output[2],n)
-  pred[which(X%*%result$x > 0.5)]<- output[1]
+  pred[which(X%*%result$x > 0)]<- output[1]
   result$prediction <- pred
-  result$accuracy <-   mean(result$prediction == yy)
+  result$accuracy <-   max(mean(result$prediction == yy),1-mean(result$prediction == yy)) 
   result$label <-output
   return(result)
 }
