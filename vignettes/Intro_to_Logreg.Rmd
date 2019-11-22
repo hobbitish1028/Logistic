@@ -63,7 +63,7 @@ t1<-proc.time()-t0
 We can judge the convergence of algorithm by plotting the loss function. My function will judge by itself and stop when it converges. And the default maximal iteration number is 5000. In the application, if the results diverge according to the plot, we can tune the parameter maxit until it converges (increase the `maxit` value), which is important to achieve a great prediction. (As for the optimization detail, we use adam-like algorithm, which is quite stable and converges quickly. Different from SGD, it is less sensitive to parameter, and the default parameter can already deal with most of the condition.)
 
 ```{r}
-plot(51:length(fit$loss),fit$loss[-(1:50)],main = "Convergence",xlab = "iteration",ylab = "-loglikelihood")
+plot(11:length(fit$loss),fit$loss[-(1:10)],main = "Convergence",xlab = "iteration",ylab = "-loglikelihood")
 
 plot(fit$P[c(1:100,1e4+(1:100))],main="Probability (Prediction)",xlab = "sample number",ylab = "probability of group 1")
 ```
