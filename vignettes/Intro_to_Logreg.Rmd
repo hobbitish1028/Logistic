@@ -31,7 +31,7 @@ The following is an toy example with 20000 samples and 100 features (we use it a
 
 sigma<-4
 set.seed(123)
-n<-1e4
+n<-1e5
 p<-1e2
 mu1<-rnorm(p)
 mu2<-rnorm(p)
