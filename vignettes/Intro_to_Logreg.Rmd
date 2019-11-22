@@ -29,10 +29,11 @@ The following is an toy example with 20000 samples and 100 features (we use it a
 
 ```{r}
 
-sigma<-5
+sigma<-4
 set.seed(123)
 n<-2e4
-p<-2e2
+p<-1e2
+
 mu1<-rnorm(p)
 mu2<-rnorm(p)
 X1<-matrix(mu1+rnorm(n*p,0,sigma),n,p,byrow = TRUE)
@@ -65,7 +66,6 @@ We can judge the convergence of algorithm by plotting the loss function. My func
 ```{r}
 plot(51:length(fit$loss),fit$loss[-(1:50)],main = "Convergence",xlab = "iteration",ylab = "-loglikelihood")
 
-plot(fit$P[c(1:100,1e4+(1:100))],main="Probability (Prediction)",xlab = "sample number",ylab = "probability of group 1")
 ```
 
 
@@ -121,7 +121,7 @@ ggplot(
   )+ geom_col(
     aes(fill=factor(method)),
     position='dodge'
-  )+coord_cartesian( ylim = c(0.96, 0.98))+ggtitle("Comparison (three models)") +
+  )+coord_cartesian( ylim = c(0.945, 0.965))+ggtitle("Comparison (three models)") +
   theme(plot.title = element_text(hjust = 0.5))
 
 A<-matrix(c(t1[3],t2[3]),1,2)
