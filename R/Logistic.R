@@ -28,8 +28,9 @@ Logreg<-function(X,y,maxit = 10000){
   tmp<-sample(1:n,n)
   X<-X[tmp,]
   y<-y[tmp]
+  output<-unique(y)
   yy<- as.numeric(y==output[1])
-  output<-unique(yy)
+  
   ### Use rcpp
   result <- LogRegcpp(X,rep(0,p),yy,maxit = maxit)
   result$loss <- result$loss[result$loss !=0 ]
