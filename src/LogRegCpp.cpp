@@ -47,19 +47,19 @@ List LogRegcpp(NumericMatrix X, NumericVector x, NumericVector y ,int maxit){
   NumericVector error(times);
   
   
-  NumericVector P0(100);
-  NumericVector P(100);
+  NumericVector P0(500);
+  NumericVector P(500);
   NumericVector gradient(p);
   
   for(int i=1; i < times ; i++){
     beta_2 = B[i+50] / B[i+51];
     
-    NumericMatrix XX = X( Range( (i-1)*100 % n, (i*100-1) %n) , _ );
-    NumericVector yy = y[Range( (i-1)*100 % n, (i*100-1) %n)];
+    NumericMatrix XX = X( Range( (i-1)*500 % n, (i*500-1) %n) , _ );
+    NumericVector yy = y[Range( (i-1)*500 % n, (i*500-1) %n)];
     
-    NumericVector P0 =  multi(XX ,x,100,p);
+    NumericVector P0 =  multi(XX ,x,500,p);
     
-    for(int i=0;i< 100;i++){
+    for(int i=0;i< 500;i++){
       if(P0[i] < -20){
         P0[i] = -20;
       }
@@ -72,7 +72,7 @@ List LogRegcpp(NumericMatrix X, NumericVector x, NumericVector y ,int maxit){
     
     NumericMatrix A2 = transpose(XX);
     NumericVector B2 = P - yy;
-    NumericVector gradient =  multi(A2 ,B2,p,100);
+    NumericVector gradient =  multi(A2 ,B2,p,500);
     
     m = m * beta_1 + (1-beta_1) * gradient;
     v = v * beta_2 + (1-beta_2) * pow(gradient,2.0);
@@ -83,7 +83,7 @@ List LogRegcpp(NumericMatrix X, NumericVector x, NumericVector y ,int maxit){
     NumericVector P1 = log(P);
     NumericVector P2 = log(1-P);
     double loss0 = 0;
-    for( int j =0;j< 100;j++){
+    for( int j =0;j< 500;j++){
       if(y[j]==0){
         loss0  -= P2[j];
       }else{
