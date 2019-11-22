@@ -29,10 +29,10 @@ The following is an toy example with 20000 samples and 100 features (we use it a
 
 ```{r}
 
-sigma<-4
+sigma<-5
 set.seed(123)
-n<-1e4
-p<-1e2
+n<-2e4
+p<-2e2
 mu1<-rnorm(p)
 mu2<-rnorm(p)
 X1<-matrix(mu1+rnorm(n*p,0,sigma),n,p,byrow = TRUE)
@@ -121,7 +121,7 @@ ggplot(
   )+ geom_col(
     aes(fill=factor(method)),
     position='dodge'
-  )+coord_cartesian( ylim = c(0.90, 0.97))+ggtitle("Comparison (three models)") +
+  )+coord_cartesian( ylim = c(0.96, 0.98))+ggtitle("Comparison (three models)") +
   theme(plot.title = element_text(hjust = 0.5))
 
 A<-matrix(c(t1[3],t2[3]),1,2)

@@ -114,7 +114,7 @@ List LogRegcpp(NumericMatrix X, NumericVector x, NumericVector y ,int maxit){
       }  
       s = s/10;
       // if the loss converge, the break
-      if(s < n/1e4){
+      if(s < n/2e4){
         break;
       }
       
