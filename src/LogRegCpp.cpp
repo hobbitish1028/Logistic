@@ -52,8 +52,8 @@ List LogRegcpp(NumericMatrix X, NumericVector x, NumericVector y ,int maxit){
   NumericVector gradient(p);
   
   for(int i=1; i < times ; i++){
-    beta_2 = B[i+50] / B[i+51];
-    
+    //beta_2 = B[i+50] / B[i+51];
+    beta_2 = 0.99;
     NumericMatrix XX = X( Range( (i-1)*500 % n, (i*500-1) %n) , _ );
     NumericVector yy = y[Range( (i-1)*500 % n, (i*500-1) %n)];
     
