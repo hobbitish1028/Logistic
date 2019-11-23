@@ -1,6 +1,6 @@
 #'Binomial Logistic regression
 #'
-#'Fit a generalized linear model via unpenalized maximum likelihood.
+#'Fit binomial logistic regression via unpenalized maximum likelihood.
 #'Use tuning-free optimization to get the result.
 #'
 #'@param X input matrix, of dimension n (sample number) by p (variable number);
@@ -52,24 +52,28 @@ Logreg<-function(X,y,maxit = 10000){
   n<-dim(X)[1]
   X<-cbind(rep(1,n),X)
   p<-dim(X)[2]
+  
+  ### we hope the n %/% 500 == 0 for the convenience of convergence
   n0<- (n-1)%/%500
   extra_n<-500*(n0+1)-n
   tmp<-sample(1:n,extra_n,replace = TRUE)
   X<-rbind(X,X[tmp,])
   y<-c(y,y[tmp])
   n<-dim(X)[1]
-  #We will use stochastic method to optimize, thus we randomly arrange them here
+  
+  ###We will use stochastic method to optimize, thus we randomly arrange them here
   set.seed(1)
   tmp<-sample(1:n,n)
   X<-X[tmp,]
   y<-y[tmp]
+  
+  ### y can be character or numeric, thus we need to "factorize" it
   output<-unique(y)
   yy<- as.numeric(y==output[1])
   
-  ### Use rcpp
+  ### Use Rcpp to speed up the loop
   result <- LogRegcpp(X,rep(0,p),yy,maxit = maxit)
   result$loss <- result$loss[result$loss !=0 ]
-
   pred<-rep(output[2],n)
   pred[which(X%*%result$x > 0)]<- output[1]
   result$prediction <- pred
