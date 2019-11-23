@@ -11,8 +11,6 @@ vignette: >
 
 We can install this package by `devtools::install_github("hobbitish1028/Logistic")`.
 
-The following package is necessary for this vignette:
-
 ```{r,echo = FALSE,include=FALSE}
 library(Logistic)
 library(Rcpp)
