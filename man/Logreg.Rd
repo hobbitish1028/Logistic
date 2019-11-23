@@ -20,7 +20,7 @@ default is 10000. And the algorithm will stop according to its stopping criterio
 A list containing the relevant data of regression result.
 }
 \description{
-Fit a generalized linear model via unpenalized maximum likelihood.
+Fit binomial logistic regression via unpenalized maximum likelihood.
 Use tuning-free optimization to get the result.
 }
 \examples{
