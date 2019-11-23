@@ -24,5 +24,12 @@ test_that("multiplication works", {
   dat<-as.data.frame(cbind(y,X))
   fit0<-glm(y~.,data=dat,family=binomial(link=logit))
   acc_glm<-(mean((fit0$fitted.values[1:n]>0.5) ) + mean((fit0$fitted.values[n+(1:n)]<0.5) ) )/2
+  
+  my_prediction<-My_predict(fit,newx = test_x)
+  test_acc_mine<-mean(my_prediction == test_y)
+  pred_glm <-cbind(rep(1,n),test_x) %*% fit0$coefficients
+  test_acc_glm<- mean( pred_glm*rep(c(1,-1),each=n)>0  )
+  
   expect_equal( ceiling(acc_mine*1e3),ceiling(acc_glm*1e3) )
+  expect_equal( ceiling(test_acc_mine*1e3),ceiling(test_acc_glm*1e3) )
 })
