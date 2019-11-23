@@ -13,6 +13,9 @@ test_that("multiplication works", {
   ### Train data
   X<-rbind(X1,X2)
   y<-rep(c(1,0),each=n)
+  test_x<-rbind( matrix(mu1+rnorm(n*p,0,sigma),n,p,byrow = TRUE), 
+                 matrix(mu2+rnorm(n*p,0,sigma),n,p,byrow = TRUE)  )
+  test_y<-rep(c(1,0),each=n)
   
   ##Accuracy of the training data and testing data
   fit<-Logreg(X,y)
