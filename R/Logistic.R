@@ -54,7 +54,9 @@ Logreg<-function(X,y,maxit = 10000){
   p<-dim(X)[2]
   n0<- (n-1)%/%500
   extra_n<-500*(n0+1)-n
-  X<-rbind(X,X[sample(1:n,extra_n,replace = TRUE),])
+  tmp<-sample(1:n,extra_n,replace = TRUE)
+  X<-rbind(X,X[tmp,])
+  y<-c(y,y[tmp])
   n<-dim(X)[1]
   #We will use stochastic method to optimize, thus we randomly arrange them here
   set.seed(1)
