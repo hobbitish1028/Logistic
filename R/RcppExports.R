@@ -4,3 +4,4 @@
 LogRegcpp <- function(X, x, y, maxit) {
     .Call(`_Logistic_LogRegcpp`, X, x, y, maxit)
 }
+
