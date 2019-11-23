@@ -68,7 +68,6 @@ List LogRegcpp(NumericMatrix X, NumericVector x, NumericVector y ,int maxit){
     
     m = m * beta_1 + (1-beta_1) * gradient;
     v = v * beta_2 + (1-beta_2) * pow(gradient,2.0);
-    
     x =   x - alpha / sqrt(i) * m / sqrt(v);
     
     

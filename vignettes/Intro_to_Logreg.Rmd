@@ -31,8 +31,10 @@ We want to maxmize the object function$$Loss = \Pi_{i=1}^{n} [P(Y_i=1)]^{y_i}[P(
 ## Generating binomial data sample
 The latent model of sample data here is Gaussian mixture model:
 
-There are two groups, for sample j with label i (i can be 0 or 1), the distribution is 
-$$X_j^i \sim N(\mu_i,\sigma^2)$$ 
+There are two groups, for samples in group i (i can be 0 or 1), the distribution is 
+
+$$X \sim N(\mu_i,\sigma^2)$$ 
+
 The following is an toy example with 20000 samples and 100 features (we use it as training model). Among them, 10000 samples are labeled with 0 and the rest are labeled as 1. And the testing model follows the same design as training model.
 
 
