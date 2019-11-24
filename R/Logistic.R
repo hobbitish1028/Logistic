@@ -54,6 +54,8 @@
 #'   
 
 Logreg<-function(X,y,maxit = 10000){
+  X<-as.matrix(X)
+  y<-as.vector(y)
   
   n<-dim(X)[1]
   X<-cbind(rep(1,n),X)  ### combine intercept
