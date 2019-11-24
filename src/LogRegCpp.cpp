@@ -2,7 +2,7 @@
 #include <math.h>
 using namespace Rcpp;
 
-
+/// Matrix multiply a vector
 NumericVector multi(Rcpp:: NumericMatrix X, Rcpp:: NumericVector beta, int nsites, int p){
   
   Rcpp:: NumericVector result(nsites);
@@ -18,7 +18,7 @@ NumericVector multi(Rcpp:: NumericMatrix X, Rcpp:: NumericVector beta, int nsite
   return result;
 }
 
-
+/// Logistic regression
 // [[Rcpp::export]]
 List LogRegcpp(NumericMatrix X, NumericVector x, NumericVector y ,int maxit){
   
@@ -31,6 +31,7 @@ List LogRegcpp(NumericMatrix X, NumericVector x, NumericVector y ,int maxit){
     m[i] = 0;
     v[i] = 1;
   } 
+  ///default parameter of Nosadam algorithm
   double alpha = 5e-2;
   double beta_1 =0.9;
   double beta_2 = 0.9;
@@ -46,7 +47,7 @@ List LogRegcpp(NumericMatrix X, NumericVector x, NumericVector y ,int maxit){
   NumericVector loss(times);
   NumericVector error(times);
   
-  
+  /// dafault batchsize is 500 
   NumericVector P0(500);
   NumericVector P(500);
   NumericVector gradient(p);
@@ -66,11 +67,13 @@ List LogRegcpp(NumericMatrix X, NumericVector x, NumericVector y ,int maxit){
     NumericVector B2 = P - yy;
     NumericVector gradient =  multi(A2 ,B2,p,500);
     
+    /// update parameter
     m = m * beta_1 + (1-beta_1) * gradient;
     v = v * beta_2 + (1-beta_2) * pow(gradient,2.0);
     x =   x - alpha / sqrt(i) * m / sqrt(v);
     
-    
+    /// calculate the loss function
+    /// record every epoch's rather than every batch's loss to save time
     NumericVector P1 = log(P);
     NumericVector P2 = log(1-P);
    
@@ -93,6 +96,7 @@ List LogRegcpp(NumericMatrix X, NumericVector x, NumericVector y ,int maxit){
       loss[i/20] = loss0;  // Loss function is the log likelihood
     }
     
+    /// stoping criteria
     if( i>3000 ){
       double mu = 0; 
       for(int j = i/20 -10; j < i/20 ; j++){
