@@ -12,6 +12,10 @@
 #'@return A list containing the relevant data of regression result.
 #'@examples
 #'
+#'### install and library package
+#'#devtools::install_github("hobbitish1028/Logistic")
+#'library(Logistic)
+#'
 #'### Generate training data
 #'sigma<-4
 #'set.seed(123)
@@ -50,7 +54,7 @@
 Logreg<-function(X,y,maxit = 10000){
   
   n<-dim(X)[1]
-  X<-cbind(rep(1,n),X)
+  X<-cbind(rep(1,n),X)  ### combine intercept
   p<-dim(X)[2]
   
   ### we hope the n %/% 500 == 0 for the convenience of convergence

@@ -25,6 +25,10 @@ Use tuning-free optimization to get the result.
 }
 \examples{
 
+### install and library package
+#devtools::install_github("hobbitish1028/Logistic")
+library(Logistic)
+
 ### Generate training data
 sigma<-4
 set.seed(123)
