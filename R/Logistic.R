@@ -14,6 +14,7 @@
 #'
 #'### install and library package (building vignetter may cost 1 minute)
 #'#devtools::install_github("hobbitish1028/Logistic",build_vignettes = TRUE,force = TRUE)
+#'#And if you fail to call help page after this, please type `.rs.restartR()` and run it.
 #'library(Logistic)
 #'
 #'### Generate training data

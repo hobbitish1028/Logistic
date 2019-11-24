@@ -18,7 +18,11 @@ Rcpp is used to speed up the loop part.
 ## Correctness and Efficiency
 Although logistic regression is a strict convex question with a global maximum, since both models use stochastic optimization, they will converge to different solutions according to their stopping criterions and optimization rules. Thus we don't use `benchmark` here, and three digits of precision is already enough to make sure their convergence and consistency.
 
+## Help
 
+Use `?Logreg` and `?My_predict` to call help page.
+
+And if you fail to call help page, please type `.rs.restartR()` and run it.
   
   
 <!-- badges: start -->
