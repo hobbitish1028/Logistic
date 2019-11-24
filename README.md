@@ -1,5 +1,5 @@
 # Logistic
-Perform binormial logistic regression
+Perform binomial logistic regression
 
 ## Goal 
 The goal of the package is to fit a binomial logistic regression via unpenalized maximum likelihood and to use the fitted model to make prediction on new data.
@@ -16,7 +16,7 @@ We also give loss plot for user to check the convergence of optimization, while 
 Rcpp is used to speed up the loop part.
 
 ## Correctness and Efficiency
-Although logistic regression is a strict convex question with a global maximum, since both model use stochastic optimization, they will converge to different solutions according to their stopping criterions and optimization rules. Thus we don't use `benchmark` here, and three digits of precision is already enough to make sure their convergence and consistency.
+Although logistic regression is a strict convex question with a global maximum, since both models use stochastic optimization, they will converge to different solutions according to their stopping criterions and optimization rules. Thus we don't use `benchmark` here, and three digits of precision is already enough to make sure their convergence and consistency.
 
 
   
