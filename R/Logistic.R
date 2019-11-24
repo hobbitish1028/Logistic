@@ -12,8 +12,8 @@
 #'@return A list containing the relevant data of regression result.
 #'@examples
 #'
-#'### install and library package
-#'#devtools::install_github("hobbitish1028/Logistic")
+#'### install and library package (building vignetter may cost 1 minute)
+#'#devtools::install_github("hobbitish1028/Logistic",build_vignettes = TRUE,force = TRUE)
 #'library(Logistic)
 #'
 #'### Generate training data
@@ -47,6 +47,8 @@
 #'
 #'### get the parameter of the logistic regression (including intercept)
 #'result<-fit$x
+#'
+#'browseVignettes("Logistic")
 #'
 #'@export
 #'   
